@@ -97,16 +97,26 @@
             <version>${cucumber.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine -->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.9.3</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${mavenexec.version}</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
                 <configuration>
-                    <mainClass>com.opencart.TestRunner</mainClass>
+                    <includes>
+                        <include>**/CucumberTestRunner*.java</include>
+                    </includes>
+                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>

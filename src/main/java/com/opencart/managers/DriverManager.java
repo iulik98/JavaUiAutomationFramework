@@ -2,6 +2,7 @@ package com.opencart.managers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -14,7 +15,10 @@ public class DriverManager {
     private DriverManager() {
         switch (webDriverType.toUpperCase()) {
             case "CHROME":
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("incognito");
+                options.addArguments("headless");
+                driver = new ChromeDriver(options);
                 System.out.println("Chrome driver was initialized");
                 break;
             case "FIREFOX":

@@ -39,8 +39,8 @@ public class RegistrationFlowTestSuite {
 
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
-        registerPage.switchOnThePrivacyCheckBox();
-        registerPage.clickOnContinueButton();
+        registerPage.switchOnThePrivacyCheckBox(driver);
+        registerPage.clickOnContinueButton(driver);
         Thread.sleep(3000);
 
         boolean urlContainsSuccessKeyword = driver.getCurrentUrl().contains("success");
@@ -58,7 +58,7 @@ public class RegistrationFlowTestSuite {
 
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
-        registerPage.clickOnContinueButton();
+        registerPage.clickOnContinueButton(driver);
         Thread.sleep(3000);
 
         boolean urlContainsSuccessKeyword = driver.getCurrentUrl().contains("success");
