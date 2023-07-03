@@ -24,8 +24,8 @@ public class TestRunner {
 
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
-        registerPage.switchOnThePrivacyCheckBox();
-        registerPage.clickOnContinueButton();
+        registerPage.switchOnThePrivacyCheckBox(driver);
+        registerPage.clickOnContinueButton(driver);
         Thread.sleep(3000);
 
         CreatedAccountPage createdPage = new CreatedAccountPage(driver);

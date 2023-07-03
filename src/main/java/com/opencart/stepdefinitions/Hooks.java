@@ -1,13 +1,10 @@
 package com.opencart.stepdefinitions;
 
 import com.opencart.managers.DriverManager;
-import com.opencart.pageobjects.HomePage;
-import com.opencart.pageobjects.RegisterPage;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
-import org.openqa.selenium.WebDriver;
 
 public class Hooks {
     static int counter = 0;

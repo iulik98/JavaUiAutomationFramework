@@ -1,8 +1,12 @@
 package com.opencart.pageobjects;
 
+import com.opencart.managers.ScrollManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static com.opencart.managers.ScrollManager.scrollToElement;
 
 public class RegisterPage extends Page {
 
@@ -34,12 +38,12 @@ public class RegisterPage extends Page {
         System.out.println("The entered password is: " + password);
     }
 
-    public void switchOnThePrivacyCheckBox(){
-        checkBoxPolicy.click();
+    public void switchOnThePrivacyCheckBox(WebDriver driver){
+        ScrollManager.clickElement(driver,checkBoxPolicy);
     }
 
-    public void clickOnContinueButton(){
-        continueButton.click();
+    public void clickOnContinueButton(WebDriver driver){
+        ScrollManager.clickElement(driver,continueButton);
     }
 
 }
