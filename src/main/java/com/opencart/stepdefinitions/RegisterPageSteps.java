@@ -12,7 +12,6 @@ import java.util.Map;
 public class RegisterPageSteps {
     WebDriver driver = DriverManager.getInstance().getDriver();
     RegisterPage registerPage = new RegisterPage(driver);
-
     @When("the registration form is completed with valid random data")
     public void theRegistrationFormIsCompletedWithValidRandomData() {
         String firstName = FakeDataManager.getRandomName();
