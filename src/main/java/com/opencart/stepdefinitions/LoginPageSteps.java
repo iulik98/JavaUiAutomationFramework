@@ -3,7 +3,6 @@ package com.opencart.stepdefinitions;
 import com.opencart.managers.DriverManager;
 import com.opencart.pageobjects.LoginPage;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -16,16 +15,5 @@ public class LoginPageSteps {
         String email = userDetailsList.get(0);
         String password = userDetailsList.get(1);
         loginPage.fillTheLoginForm(email,password);
-    }
-
-    @When("loginButton is clicked")
-    public void loginButtonIsClicked() {
-        loginPage.clickOnLogInButton();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 }
