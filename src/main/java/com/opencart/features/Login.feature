@@ -5,24 +5,24 @@ Feature: Login Feature Test Suite
 
   @Regression
   Scenario Outline: An error message is displayed when login is performed with invalid <attribute>
-    And the following data is entered into the login form:
-      | <email>    |
-      | <password> |
-    When loginButton is clicked
+    And the following fields from "LoginPage" are populated with data:
+      | emailAddress  | <emailAddress>  |
+      | passwordLogIn | <passwordLogIn> |
+    When "logInButton" from "LoginPage" is clicked
     Then the following error messages are displayed:
       | Warning: No match for E-Mail Address and/or Password. |
     Examples:
-      | attribute | email         | password |
-      | email     | fi@asda.com   | asdass   |
-      | password  | admin@aaa.com | asasdasd |
+      | attribute | emailAddress  | passwordLogIn |
+      | email     | fi@asda.com   | asdass        |
+      | password  | admin@aaa.com | asasdasd      |
 
   @Regression
   Scenario Outline: A valid user is able to login into the system.
-    And the following data is entered into the login form:
-      | <email>    |
-      | <password> |
-    When loginButton is clicked
+    And the following fields from "LoginPage" are populated with data:
+      | emailAddress  | <emailAddress>  |
+      | passwordLogIn | <passwordLogIn> |
+    When "logInButton" from "LoginPage" is clicked
     Then the current URL contains the following keyword: "customer_token"
     Examples:
-      | email                   | password |
-      | yuki.okeefe@hotmail.com | admin    |
+      | emailAddress            | passwordLogIn |
+      | yuki.okeefe@hotmail.com | admin         |

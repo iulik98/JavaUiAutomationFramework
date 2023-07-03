@@ -8,16 +8,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverManager {
-    private static String webDriverType = "Chrome";
+    private static String webDriverType = ConfigReaderManager.getProperty("browserType");
     private static DriverManager instance;
     private WebDriver driver;
+    private String optionsChrome = ConfigReaderManager.getProperty("options");
+
 
     private DriverManager() {
         switch (webDriverType.toUpperCase()) {
             case "CHROME":
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("incognito");
-                options.addArguments("headless");
+                options.addArguments(optionsChrome.trim().split(",")[0]);
+                options.addArguments(optionsChrome.trim().split(",")[1]);
                 driver = new ChromeDriver(options);
                 System.out.println("Chrome driver was initialized");
                 break;

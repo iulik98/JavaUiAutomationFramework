@@ -21,18 +21,6 @@ public class LoginPage extends Page{
         super(driver);
     }
 
-    public void fillTheLoginForm(String email, String pass){
-        emailAddress.sendKeys(email);
-        System.out.println("Entered the following email: " + email);
-        passwordLogIn.sendKeys(pass);
-        System.out.println("Entered the following password: " + pass);
-    }
-
-    public void clickOnLogInButton(){
-        logInButton.click();
-        System.out.println("The login button was clicked.");
-    }
-
 
 
 }
