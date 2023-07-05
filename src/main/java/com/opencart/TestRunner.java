@@ -15,7 +15,7 @@ public class TestRunner {
         driver.get("https://andreisecuqa.host/");
 
         HomePage homePage = new HomePage(driver);
-        homePage.navigateToRegisterPageFromHeaderMenu();
+      //  homePage.navigateToRegisterPageFromHeaderMenu();
 
         String firstName = FakeDataManager.getRandomName();
         String lastName = FakeDataManager.getRandomName();
@@ -23,9 +23,9 @@ public class TestRunner {
         String password = FakeDataManager.getRandomPassword(4, 20);
 
         RegisterPage registerPage = new RegisterPage(driver);
-        registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
-        registerPage.switchOnThePrivacyCheckBox(driver);
-        registerPage.clickOnContinueButton(driver);
+//        registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
+//        registerPage.switchOnThePrivacyCheckBox();
+//        registerPage.clickOnContinueButton();
         Thread.sleep(3000);
 
         CreatedAccountPage createdPage = new CreatedAccountPage(driver);
@@ -42,8 +42,8 @@ public class TestRunner {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPageFromHeaderMenu();
         Thread.sleep(1000);
-        loginPage.fillTheLoginForm(email, password);
-        loginPage.clickOnLogInButton();
+//        loginPage.fillTheLoginForm(email, password);
+//        loginPage.clickOnLogInButton();
 
         Thread.sleep(2000);
         if (loginPage.isUserLoggedIn(driver)) {

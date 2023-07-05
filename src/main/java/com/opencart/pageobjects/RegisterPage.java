@@ -38,12 +38,4 @@ public class RegisterPage extends Page {
         System.out.println("The entered password is: " + password);
     }
 
-    public void switchOnThePrivacyCheckBox(WebDriver driver){
-        ScrollManager.clickElement(driver,checkBoxPolicy);
-    }
-
-    public void clickOnContinueButton(WebDriver driver){
-        ScrollManager.clickElement(driver,continueButton);
-    }
-
 }

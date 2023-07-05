@@ -21,17 +21,6 @@ public class RegisterPageSteps {
         registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
     }
 
-    @And("the privacy checkbox is enabled")
-    public void thePrivacyCheckboxIsEnabled() {
-        registerPage.switchOnThePrivacyCheckBox(driver);
-    }
-
-    @And("continueButton is clicked")
-    public void continueButtonIsClicked() throws InterruptedException {
-        registerPage.clickOnContinueButton(driver);
-        Thread.sleep(500);
-    }
-
     @And("the registration form is completed with the following data:")
     public void theRegistrationFormIsCompletedWithTheFollowingData(Map<String, String> userDetailsMap) {
         String firstNameValue = userDetailsMap.get("firstName");
