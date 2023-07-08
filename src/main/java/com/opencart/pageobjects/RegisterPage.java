@@ -29,13 +29,13 @@ public class RegisterPage extends Page {
 
     public void fillInTheRegisterForm(String firstName,String lastName,String email,String password){
         firstNameField.sendKeys(firstName);
-        System.out.println("The entered first name is: " + firstName);
+        logger.info("The entered first name is: " + firstName);
         lastNameField.sendKeys(lastName);
-        System.out.println("The entered last name is: " + lastName);
+        logger.info("The entered last name is: " + lastName);
         emailField.sendKeys(email);
-        System.out.println("The entered email is: " + email);
+        logger.info("The entered email is: " + email);
         passField.sendKeys(password);
-        System.out.println("The entered password is: " + password);
+        logger.info("The entered password is: " + password);
     }
 
 }
