@@ -1,5 +1,8 @@
 package com.opencart.pageobjects;
 
+import com.opencart.managers.DriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class AdminPage {
+
+    private static final Logger logger = LogManager.getLogger(AdminPage.class);
 
     @FindBy(xpath = "//i[@class='fas fa-user']")
     private WebElement customerTab;
@@ -28,15 +33,15 @@ public class AdminPage {
 
     public void clickOnCustomerTab(){
         customerTab.click();
-        System.out.println("Customer Tab was clicked");
+        logger.info("Customer Tab was clicked");
     }
 
     public void clickOnCustomerSubTab(){
         try {
             customerSubTab.click();
-            System.out.println("CustomerSubTab was clicked");
+            logger.info("CustomerSubTab was clicked");
         } catch (ElementNotInteractableException e){
-            System.out.println("This method triggered an exception with this message: " + e.getMessage());
+            logger.info("This method triggered an exception with this message: " + e.getMessage());
         }
 
     }

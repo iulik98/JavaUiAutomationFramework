@@ -1,5 +1,8 @@
 package com.opencart.managers;
 
+import dev.failsafe.internal.util.Durations;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,12 +10,15 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.time.Duration;
+import java.util.Objects;
+
 public class DriverManager {
-    private static String webDriverType = ConfigReaderManager.getProperty("browserType");
+    private static final Logger logger = LogManager.getLogger(DriverManager.class);
+    private static final String webDriverType = ConfigReaderManager.getProperty("browserType");
     private static DriverManager instance;
     private WebDriver driver;
-    private String optionsChrome = ConfigReaderManager.getProperty("options");
-
+    private final String optionsChrome = ConfigReaderManager.getProperty("options");
 
     private DriverManager() {
         switch (webDriverType.toUpperCase()) {
@@ -21,44 +27,48 @@ public class DriverManager {
                 options.addArguments(optionsChrome.trim().split(",")[0]);
                 options.addArguments(optionsChrome.trim().split(",")[1]);
                 driver = new ChromeDriver(options);
-                System.out.println("Chrome driver was initialized");
+                logger.info("Chrome driver was initialized");
                 break;
             case "FIREFOX":
                 driver = new FirefoxDriver();
-                System.out.println("FireFox driver was initialized");
+                logger.info("FireFox driver was initialized");
                 break;
             case "EDGE":
                 driver = new EdgeDriver();
-                System.out.println("Edge driver was initialized");
+                logger.info("Edge driver was initialized");
                 break;
             case "SAFARI":
                 driver = new SafariDriver();
-                System.out.println("Safari driver was initialized");
+                logger.info("Safari driver was initialized");
                 break;
             default:
-                System.out.println("There is no such driver: " + webDriverType);
+                logger.info("There is no such driver: " + webDriverType);
         }
+        int implicitWaitValue = Integer.parseInt(ConfigReaderManager.getProperty("implicitWaitValue"));
+        int implicitPageLoadValue = Integer.parseInt(ConfigReaderManager.getProperty("implicitPageLoadValue"));
+        Objects.requireNonNull(driver).manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitValue));
+        Objects.requireNonNull(driver).manage().timeouts().pageLoadTimeout(Duration.ofSeconds(implicitPageLoadValue));
     }
 
-    public static DriverManager getInstance(){
-        if (instance == null){
+    public static DriverManager getInstance() {
+        if (instance==null) {
             instance = new DriverManager();
         }
         return instance;
     }
 
-    public WebDriver getDriver(){
-        if (driver == null) {
+    public WebDriver getDriver() {
+        if (driver==null) {
             getInstance();
         }
         return driver;
     }
 
-    public void quitWebDriver(){
+    public void quitWebDriver() {
         driver.quit();
         driver = null;
         instance = null;
-        System.out.println("The browser is closed and session is set to null");
+        logger.info("The browser is closed and session is set to null");
     }
 
 

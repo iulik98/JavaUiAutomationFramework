@@ -1,5 +1,8 @@
 package com.opencart.pageobjects;
 
+import com.opencart.managers.DriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +21,8 @@ public abstract class Page {
 
     @FindBy(linkText = "Login")
     protected WebElement loginBtn;
+    protected final Logger logger = LogManager.getLogger(this.getClass());
+
 
     public Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -25,23 +30,23 @@ public abstract class Page {
 
     public void navigateToRegisterPageFromHeaderMenu() {
         accountIcon.click();
-        System.out.println("The account icon was clicked");
+        logger.info("The account icon was clicked");
 
         registerBtn.click();
-        System.out.println("The register button was clicked");
+        logger.info("The register button was clicked");
 
     }
 
     public void clickOnLogOutOption(){
         accountIcon.click();
-        System.out.println("Account icon was clicked from logout method");
+        logger.info("Account icon was clicked from logout method");
         logOutOption.click();
-        System.out.println("Logout button was clicked");
+        logger.info("Logout button was clicked");
     }
 
     public void navigateToLoginPageFromHeaderMenu(){
         loginBtn.click();
-        System.out.println("The login option was clicked");
+        logger.info("The login option was clicked");
     }
 
     public boolean isUserLoggedIn(WebDriver driver){

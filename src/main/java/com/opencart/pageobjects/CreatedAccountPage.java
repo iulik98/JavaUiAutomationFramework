@@ -18,7 +18,7 @@ public class CreatedAccountPage extends Page {
 
     public void clickOnContinueButton() {
         continueButton.click();
-        System.out.println("The continue button from CreatedAccountPage was clicked");
+        logger.info("The continue button from CreatedAccountPage was clicked");
     }
 
     public String getConfirmationText() {
